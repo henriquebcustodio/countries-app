@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 
@@ -48,6 +49,12 @@ const StyledLabel = styled.label`
 const iconStyles = { color: "#808080" };
 
 export const Search = () => {
+    const [query, setQuery] = useState('');
+
+    const queryChangeHandler = event => {
+        setQuery(event.target.value);
+    };
+
     return (
         <Wrapper>
             <StyledLabel htmlFor="search">
@@ -57,6 +64,8 @@ export const Search = () => {
                 placeholder="Search for a country..."
                 spellCheck="false"
                 id="search"
+                value={query}
+                onChange={queryChangeHandler}
             />
         </Wrapper>
     );

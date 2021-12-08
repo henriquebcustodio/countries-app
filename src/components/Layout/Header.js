@@ -9,6 +9,7 @@ const StyledHeader = styled.header`
     background-color: #FFFFFF;
     box-shadow: 0 4px 3px #F0F0F0;
     box-sizing: border-box;
+    height: 5rem;
 
     @media screen and (max-width: 480px) {
         padding: 1.5rem 5%;
