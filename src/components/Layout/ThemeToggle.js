@@ -16,6 +16,7 @@ const Wrapper = styled.div`
 const Label = styled.span`
     margin-left: 0.7em;
     font-weight: bold;
+    font-size: 1rem;
 `;
 
 const ThemeToggle = () => {
