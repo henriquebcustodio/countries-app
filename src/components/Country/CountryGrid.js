@@ -6,6 +6,7 @@ const StyledGrid = styled.main`
     grid-gap: 4rem;
     justify-content: center;
     padding: 0 2rem;
+    margin-bottom: 4rem;
 
     @media screen and (min-width: 680px) {
         grid-template-columns: repeat(2, 17rem);

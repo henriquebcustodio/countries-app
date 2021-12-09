@@ -9,6 +9,12 @@ const Wrapper = styled.div`
     height: 22rem;
     width: 17rem;
     overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: translateY(-0.5rem);
+    }
 `;
 
 const Flag = styled.div`
@@ -43,7 +49,7 @@ const Country = props => {
             <Details>
                 <h3>{props.countryDetails.name}</h3>
                 <ul>
-                    <li><b>Population: </b>{props.countryDetails.population}</li>
+                    <li><b>Population: </b>{props.countryDetails.population.toLocaleString()}</li>
                     <li><b>Region: </b>{props.countryDetails.region}</li>
                     <li><b>Capital: </b>{props.countryDetails.capital}</li>
                 </ul>

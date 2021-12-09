@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 
@@ -48,12 +48,22 @@ const StyledLabel = styled.label`
 
 const iconStyles = { color: "#808080" };
 
-export const Search = () => {
+export const Search = props => {
     const [query, setQuery] = useState('');
 
     const queryChangeHandler = event => {
         setQuery(event.target.value);
     };
+
+    useEffect(() => {
+        const identifier = setTimeout(() => {
+            props.onSearchChange(query);
+        }, 350);
+
+        return () => {
+            clearTimeout(identifier);
+        };
+    });
 
     return (
         <Wrapper>

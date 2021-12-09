@@ -49,19 +49,19 @@ const ListItem = styled.li`
 
 const Filter = props => {
     const [dropdownVisible, setDropdownVisible] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(null);
+    const [selectedOption, setSelectedOption] = useState('');
     const filterRef = useRef();
 
     const optionClickHandler = event => {
         const option = event.target.id;
         setSelectedOption(option);
         setDropdownVisible(false);
-        props.onOptionChange && props.onOptionChange(selectedOption);
+        props.onOptionChange && props.onOptionChange(option);
     };
 
     const removeSelectedOptionHandler = () => {
-        setSelectedOption(null);
-        props.onOptionChange && props.onOptionChange(selectedOption);
+        setSelectedOption('');
+        props.onOptionChange && props.onOptionChange('');
     };
 
     const headerClickHandler = () => {

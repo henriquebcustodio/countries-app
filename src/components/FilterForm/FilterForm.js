@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import Search from "./Search";
 import Filter from "./Filter";
+import FilterContext from "../../store/filter-context";
 
 const StyledForm = styled.form`
     display: flex;
@@ -18,12 +20,22 @@ const StyledForm = styled.form`
 `;
 
 const FilterForm = () => {
+    const { query, updateQuery, region, updateRegion } = useContext(FilterContext);
+
     const filterOptions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
+
+    const regionChangeHandler = newRegion => {
+        updateRegion(newRegion);
+    };
+
+    const searchChangeHandler = newQuery => {
+        updateQuery(newQuery);
+    };
 
     return (
         <StyledForm>
-            <Search />
-            <Filter options={filterOptions} headerLabel="Filter by Region"></Filter>
+            <Search onSearchChange={searchChangeHandler} />
+            <Filter options={filterOptions} headerLabel="Filter by Region" onOptionChange={regionChangeHandler}></Filter>
         </StyledForm>
     );
 };
