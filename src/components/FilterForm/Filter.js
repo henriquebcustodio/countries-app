@@ -22,8 +22,9 @@ const DropDownHeader = styled.div`
     padding: 0 1.4rem;
     border-radius: 5px;
     box-sizing: border-box;
-    box-shadow: 0 0 10px #F0F0F0;
-    background-color: #FFFFFF;
+    box-shadow: 0 0 10px -1px ${props => props.theme.boxShadowColor};
+    background-color: ${props => props.theme.componentColor};
+    color: ${props => props.theme.primaryTextColor};
     cursor: pointer;
 `;
 
@@ -34,10 +35,11 @@ const DropDownList = styled.ul`
     margin: 0;
     padding: 0 1.4rem;
     padding-top: 0.8rem;
-    background: #FFFFFF;
+    background: ${props => props.theme.componentColor};
+    color: ${props => props.theme.primaryTextColor};
     border-radius: 5px;
     box-sizing: border-box;
-    box-shadow: 0 0 10px #F0F0F0;
+    box-shadow: 3px 0px 7px ${props => props.theme.boxShadowColor};
     width: 100%;
 `;
 

@@ -4,8 +4,9 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     border-radius: 5px;
-    box-shadow: 0 0 10px #F0F0F0;
-    background-color: #FFFFFF;
+    box-shadow: 0 0 7px -1px ${props => props.theme.boxShadowColor};
+    background-color: ${props => props.theme.componentColor};
+    color: ${props => props.theme.primaryTextColor};
     height: 22rem;
     width: 17rem;
     overflow: hidden;

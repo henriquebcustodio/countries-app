@@ -20,7 +20,7 @@ const StyledForm = styled.form`
 `;
 
 const FilterForm = () => {
-    const { query, updateQuery, region, updateRegion } = useContext(FilterContext);
+    const { updateQuery, updateRegion } = useContext(FilterContext);
 
     const filterOptions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
 

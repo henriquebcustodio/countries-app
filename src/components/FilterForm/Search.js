@@ -11,8 +11,8 @@ const Wrapper = styled.div`
     height: 3.5rem;
     width: 30%;
     min-width: 20rem;
-    background-color: #FFFFFF;
-    box-shadow: 0 0 10px #F0F0F0;
+    background-color: ${props => props.theme.componentColor};
+    box-shadow: 0 0 10px -1px ${props => props.theme.boxShadowColor};
     box-sizing: border-box;
 
     @media screen and (max-width: 769px) {
@@ -28,6 +28,8 @@ const StyledInput = styled.input`
     margin-left: 1.5em;
     outline: none;
     border: none;
+    color: ${props => props.theme.primaryTextColor};
+    background-color: ${props => props.theme.componentColor};
     padding: 0;
     text-decoration: none;
     font: inherit;
@@ -35,7 +37,7 @@ const StyledInput = styled.input`
     font-weight: 600;
 
     &::placeholder {
-        color: #808080;
+        color: ${props => props.theme.secondaryTextColor};
     }
 `;
 
@@ -44,11 +46,10 @@ const StyledLabel = styled.label`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    color: ${props => props.theme.secondaryTextColor};
 `;
 
-const iconStyles = { color: "#808080" };
-
-export const Search = props => {
+const Search = props => {
     const [query, setQuery] = useState('');
 
     const queryChangeHandler = event => {
@@ -68,7 +69,7 @@ export const Search = props => {
     return (
         <Wrapper>
             <StyledLabel htmlFor="search">
-                <FaSearch style={iconStyles} />
+                <FaSearch />
             </StyledLabel>
             <StyledInput
                 placeholder="Search for a country..."
