@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Header from './components/Layout/Header';
+import CountryIndex from './components/Countries/CountryIndex';
+import CountryDetails from './components/Countries/CountryDetails/CountryDetails';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
-import FilterForm from './components/FilterForm/FilterForm';
-import Header from './components/Layout/Header';
-import Main from './components/Layout/Main';
-import FilterProvider from './store/FilterProvider';
 import lightTheme from './themes/light-theme';
 import darkTheme from './themes/dark-theme';
+
 
 const themes = {
     light: lightTheme,
@@ -21,25 +22,40 @@ const Wrapper = styled.section`
 `;
 
 const App = () => {
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState(getTheme);
 
     const themeChangeHandler = () => {
-        theme === 'light' && setTheme('dark');
-        theme === 'dark' && setTheme('light');
+        if (theme === 'light') {
+            setTheme('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            setTheme('light');
+            localStorage.setItem('theme', 'light');
+        }
+    };
+
+    function getTheme() {
+        const localTheme = localStorage.getItem('theme');
+        if (localTheme) {
+            return localTheme;
+        }
+        localStorage.setItem('theme', 'light');
+        return 'light';
     };
 
     return (
-        <ThemeProvider theme={themes[theme]}>
-            <Wrapper>
-                <Header onThemeChange={themeChangeHandler} theme={theme} />
-                <ThemeProvider theme={themes[theme]}>
-                    <FilterProvider>
-                        <FilterForm />
-                        <Main />
-                    </FilterProvider>
-                </ThemeProvider>
-            </Wrapper>
-        </ThemeProvider>
+        <BrowserRouter>
+            <ThemeProvider theme={themes[theme]}>
+                <Wrapper>
+                    <Header onThemeChange={themeChangeHandler} theme={theme} />
+                    <Routes>
+                        <Route path="/" element={<Navigate to="/countries" />} />
+                        <Route path="countries" element={<CountryIndex />} />
+                        <Route path='countries/:countryId' element={<CountryDetails />} />
+                    </Routes>
+                </Wrapper>
+            </ThemeProvider>
+        </BrowserRouter>
     );
 };
 

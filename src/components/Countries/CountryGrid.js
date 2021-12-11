@@ -1,16 +1,16 @@
 import styled from "styled-components";
-import Country from "../Country/Country";
+import Country from "./Country";
 
 const StyledGrid = styled.main`
     display: grid;
     grid-gap: 4rem;
     justify-content: center;
-    padding: 0 2rem;
+    margin: 0 2rem;
     margin-bottom: 4rem;
 
     @media screen and (min-width: 680px) {
         grid-template-columns: repeat(2, 17rem);
-        padding: 0 4rem;   
+        margin: 0 4rem;   
     }
 
     @media screen and (min-width: 1060px) {
@@ -32,7 +32,7 @@ const CountryGrid = props => {
     return (
         <StyledGrid>
             {props.countries.map(countryDetails => {
-                return <Country countryDetails={countryDetails} key={countryDetails.name} />;
+                return <Country countryDetails={countryDetails} key={countryDetails.alpha3Code} />;
             })}
         </StyledGrid>
     );

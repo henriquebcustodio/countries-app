@@ -35,7 +35,11 @@ const FilterForm = () => {
     return (
         <StyledForm>
             <Search onSearchChange={searchChangeHandler} />
-            <Filter options={filterOptions} headerLabel="Filter by Region" onOptionChange={regionChangeHandler}></Filter>
+            <Filter
+                options={filterOptions}
+                headerLabel="Filter by Region"
+                onOptionChange={regionChangeHandler}>
+            </Filter>
         </StyledForm>
     );
 };

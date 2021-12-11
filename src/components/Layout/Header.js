@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import ThemeToggle from "./ThemeToggle";
 
@@ -19,6 +20,7 @@ const StyledHeader = styled.header`
     h1 {
         margin: 0;
         font-size: 1.5rem;
+        color: ${props => props.theme.primaryTextColor};
 
         @media screen and (max-width: 480px) {
             font-size: 1rem;
@@ -29,7 +31,9 @@ const StyledHeader = styled.header`
 const Header = props => {
     return (
         <StyledHeader>
-            <h1>Where in the world?</h1>
+            <Link to="/countries" style={{ textDecoration: 'none' }}>
+                <h1>Where in the world?</h1>
+            </Link>
             <ThemeToggle onToggle={props.onThemeChange} theme={props.theme} />
         </StyledHeader>
     );

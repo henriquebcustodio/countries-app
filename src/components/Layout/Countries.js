@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
-import CountryGrid from "../Country/CountryGrid";
+import CountryGrid from "../Countries/CountryGrid";
 import api from "../../services/api";
 import FilterContext from '../../store/filter-context';
 
-const Main = () => {
+const Countries = () => {
     const [countries, setCountries] = useState([]);
     const [filteredCountries, setFilteredCountries] = useState([]);
 
@@ -12,7 +12,7 @@ const Main = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await api.get("/all?fields=name,population,region,capital,flag");
+                const response = await api.get("/all?fields=name,population,region,capital,flag,alpha3Code");
                 setCountries(response.data);
             } catch (err) {
                 console.log('An error has occurred!', err);
@@ -34,10 +34,9 @@ const Main = () => {
         setFilteredCountries(newFilteredCountries);
     }, [region, query, countries]);
 
-
     return (
         <CountryGrid countries={filteredCountries} />
     );
 };
 
-export default Main;
+export default Countries;
