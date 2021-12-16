@@ -19,6 +19,7 @@ const Wrapper = styled.section`
     flex-direction: column;
     min-height: 100vh;
     background-color: ${props => props.theme.pageBackgroundColor};
+    transition: all 0.2s ease-out;
 `;
 
 const App = () => {
