@@ -6,6 +6,7 @@ import BackButton from './BackButton';
 import CountryFlag from './CountryFlag';
 import Details from './Details';
 import BorderCountries from './BorderCountries';
+import Loading from '../../UI/Loading';
 
 const StyledNav = styled.nav`
     display: flex;
@@ -31,8 +32,8 @@ const Wrapper = styled.div`
     }
 `;
 
-const FlagWrapper = styled.div` 
-
+const FlagWrapper = styled.div`
+    max-height: 30rem;
     @media screen and (min-width: 1100px) {
         flex: 1;
         margin-right: 4rem;
@@ -72,7 +73,7 @@ const CountryDetails = () => {
             <StyledNav>
                 <BackButton />
             </StyledNav>
-            {countryData.name &&
+            {Object.keys(countryData).length > 0 &&
                 <Wrapper>
                     <FlagWrapper>
                         <CountryFlag flagUrl={countryData.flag} />
@@ -82,6 +83,9 @@ const CountryDetails = () => {
                         <BorderCountries borderCodes={countryData.borders} />
                     </DetailsWrapper>
                 </Wrapper>}
+            {Object.keys(countryData).length === 0 &&
+                <Loading />
+            }
         </Fragment>
     );
 };

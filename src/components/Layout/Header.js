@@ -6,24 +6,24 @@ const StyledHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 4rem;
+    padding: 1.5rem 5%;
     background-color: ${props => props.theme.componentColor};
     color: ${props => props.theme.primaryTextColor};
     box-shadow: 0 2px 10px -1px ${props => props.theme.boxShadowColor};
     box-sizing: border-box;
     height: 5rem;
 
-    @media screen and (max-width: 480px) {
-        padding: 1.5rem 5%;
+    @media screen and (min-width: 480px) {
+        padding: 1.5rem 4rem;
     }
 
     h1 {
         margin: 0;
-        font-size: 1.5rem;
+        font-size: 1rem;
         color: ${props => props.theme.primaryTextColor};
 
-        @media screen and (max-width: 480px) {
-            font-size: 1rem;
+        @media screen and (min-width: 480px) {
+            font-size: 1.5rem;
         }
     }
 `;

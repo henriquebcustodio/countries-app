@@ -9,16 +9,18 @@ const Wrapper = styled.div`
     padding: 0 1.4rem;
     border-radius: 5px;
     height: 3.5rem;
-    width: 30%;
-    min-width: 20rem;
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 3rem;
+
     background-color: ${props => props.theme.componentColor};
     box-shadow: 0 0 10px -1px ${props => props.theme.boxShadowColor};
     box-sizing: border-box;
 
-    @media screen and (max-width: 769px) {
-        margin-bottom: 3rem;
-        width: 100%;
-        min-width: 0;
+    @media screen and (min-width: 769px) {
+        margin-bottom: 0;
+        width: 30%;
+        min-width: 20rem; 
     }
 `;
 

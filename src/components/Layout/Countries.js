@@ -1,7 +1,8 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, Fragment } from 'react';
 import CountryGrid from "../Countries/CountryGrid";
 import api from "../../services/api";
 import FilterContext from '../../store/filter-context';
+import Loading from '../UI/Loading';
 
 const Countries = () => {
     const [countries, setCountries] = useState([]);
@@ -35,7 +36,10 @@ const Countries = () => {
     }, [region, query, countries]);
 
     return (
-        <CountryGrid countries={filteredCountries} />
+        <Fragment>
+            {filteredCountries.length > 0 && <CountryGrid countries={filteredCountries} />}
+            {filteredCountries.length === 0 && <Loading />}
+        </Fragment>
     );
 };
 

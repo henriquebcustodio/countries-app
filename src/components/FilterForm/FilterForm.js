@@ -6,16 +6,17 @@ import FilterContext from "../../store/filter-context";
 
 const StyledForm = styled.form`
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3rem 2rem;
     justify-content: space-between;
     width: 100%;
-    padding: 3rem 4rem;
     box-sizing: border-box;
 
-    @media screen and (max-width: 769px) {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 3rem 2rem;
+    @media screen and (min-width: 769px) {
+        padding: 3rem 4rem;
+        align-items: center;
+        flex-direction: row;
     }
 `;
 
