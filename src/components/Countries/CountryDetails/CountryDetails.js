@@ -46,8 +46,10 @@ const DetailsWrapper = styled.div`
     width: 100%;
     max-width: 50rem;
     margin: auto;
+
     @media screen and (min-width: 1100px) {
         flex: 1;
+        margin: 0;
         margin-left: 4rem;
     }
 `;

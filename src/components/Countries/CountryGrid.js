@@ -1,4 +1,6 @@
+import { Fragment } from "react";
 import styled from "styled-components";
+import Loading from "../UI/Loading";
 import Country from "./Country";
 
 const StyledGrid = styled.main`
@@ -28,13 +30,26 @@ const StyledGrid = styled.main`
 
 `;
 
+const LoadingWrapper = styled.div`
+    margin: auto;
+`;
+
 const CountryGrid = props => {
     return (
-        <StyledGrid>
-            {props.countries.map(countryDetails => {
-                return <Country countryDetails={countryDetails} key={countryDetails.alpha3Code} />;
-            })}
-        </StyledGrid>
+        <Fragment>
+            {props.countries.length > 0 &&
+                <StyledGrid>
+                    {props.countries.map(countryDetails => {
+                        return <Country countryDetails={countryDetails} key={countryDetails.alpha3Code} />;
+                    })}
+                </StyledGrid>
+            }
+            {props.countries.length === 0 &&
+                <LoadingWrapper>
+                    <Loading />
+                </LoadingWrapper>
+            }
+        </Fragment>
     );
 };
 

@@ -4,7 +4,6 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 30vh;
 `;
 const Loader = styled.div`
     animation: is-rotating 1s infinite;

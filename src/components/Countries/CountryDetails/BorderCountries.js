@@ -2,10 +2,12 @@ import { useState, useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import api from '../../../services/api';
+import Loading from '../../UI/Loading';
 
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
+    height: max-content;
     margin-bottom: 4rem;
     color: ${props => props.theme.primaryTextColor};
 
@@ -32,25 +34,28 @@ const Border = styled.div`
 `;
 
 const BorderCountries = props => {
+    const [isLoading, setIsLoading] = useState(true);
     const [borderList, setBorderList] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
+            setIsLoading(true);
             try {
                 const response = await api.get(`/alpha?codes=${props.borderCodes.toString()}&fields=name,alpha3Code`);
                 setBorderList(response.data);
             } catch (err) {
                 console.log('An error has occurred', err);
             }
+            setIsLoading(false);
         }
         props.borderCodes && fetchData();
     }, [props.borderCodes]);
 
     return (
         <Fragment>
-            {borderList.length > 0 &&
-                <Wrapper>
-                    <h3>Border Countries:</h3>
+            <Wrapper>
+                <h3>Border Countries:</h3>
+                {!isLoading &&
                     <Borders>
                         {borderList.map(border => {
                             return (
@@ -64,7 +69,9 @@ const BorderCountries = props => {
                             );
                         })}
                     </Borders>
-                </Wrapper>}
+                }
+                {isLoading && <Loading />}
+            </Wrapper>
         </Fragment>
     );
 };
