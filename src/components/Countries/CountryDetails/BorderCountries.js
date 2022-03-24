@@ -54,7 +54,7 @@ const BorderCountries = props => {
     return (
         <Fragment>
             <Wrapper>
-                <h3>Border Countries:</h3>
+                {borderList.length > 0 && <h3>Border Countries:</h3>}
                 {!isLoading &&
                     <Borders>
                         {borderList.map(border => {
