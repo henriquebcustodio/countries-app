@@ -22,7 +22,6 @@ const StyledNav = styled.nav`
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    alilgn-items: center;
     margin: 0 2rem;
 
     @media screen and (min-width: 1100px) {
@@ -33,7 +32,10 @@ const Wrapper = styled.div`
 `;
 
 const FlagWrapper = styled.div`
-    max-height: 30rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    overflow: hidden;
     @media screen and (min-width: 1100px) {
         flex: 1;
         margin-right: 4rem;
@@ -41,6 +43,9 @@ const FlagWrapper = styled.div`
 `;
 
 const DetailsWrapper = styled.div`
+    width: 100%;
+    max-width: 50rem;
+    margin: auto;
     @media screen and (min-width: 1100px) {
         flex: 1;
         margin-left: 4rem;
