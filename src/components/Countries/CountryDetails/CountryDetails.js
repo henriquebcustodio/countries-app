@@ -54,6 +54,10 @@ const DetailsWrapper = styled.div`
     }
 `;
 
+const LoadingWrapper = styled.div`
+    margin: auto;
+`;
+
 const CountryDetails = () => {
     const params = useParams();
     const [countryData, setCountryData] = useState({});
@@ -91,7 +95,9 @@ const CountryDetails = () => {
                     </DetailsWrapper>
                 </Wrapper>}
             {Object.keys(countryData).length === 0 &&
-                <Loading />
+                <LoadingWrapper>
+                    <Loading />
+                </LoadingWrapper>
             }
         </Fragment>
     );
